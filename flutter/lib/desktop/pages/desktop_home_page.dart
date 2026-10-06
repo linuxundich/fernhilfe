@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hbb/lui/lui_home.dart'; // LUI
 import 'package:flutter_hbb/common.dart';
 import 'package:flutter_hbb/common/widgets/animated_rotation_widget.dart';
 import 'package:flutter_hbb/common/widgets/custom_password.dart';
@@ -111,6 +112,12 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         },
       ),
     ];
+    // LUI: Fernhilfe start screen instead of logo, ID and password boards
+    if (isIncomingOnly) {
+      children
+        ..clear()
+        ..addAll(buildLuiHome(context));
+    }
     if (isIncomingOnly) {
       children.addAll([
         Divider(),
@@ -129,7 +136,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     return ChangeNotifierProvider.value(
       value: gFFI.serverModel,
       child: Container(
-        width: isIncomingOnly ? 280.0 : 200.0,
+        width: isIncomingOnly ? kLuiHomeWidth : 200.0, // LUI: was 280
         color: Theme.of(context).colorScheme.background,
         child: Stack(
           children: [
