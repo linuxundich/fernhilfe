@@ -21,13 +21,10 @@ for lib in $BUNDLE_LIBS; do
   cp -L "$(ldconfig -p | awk -v l="$lib" '$1==l && /x86-64/ {print $NF; exit}')" "$APPDIR/usr/lib/"
 done
 
-for s in 32 64 128; do
-  install -Dm644 res/${s}x${s}.png "$APPDIR/usr/share/icons/hicolor/${s}x${s}/apps/$ID.png"
-done
-install -Dm644 res/128x128@2x.png "$APPDIR/usr/share/icons/hicolor/256x256/apps/$ID.png"
-install -Dm644 res/scalable.svg "$APPDIR/usr/share/icons/hicolor/scalable/apps/$ID.svg"
-cp res/128x128@2x.png "$APPDIR/$ID.png"
-cp res/128x128@2x.png "$APPDIR/.DirIcon"
+mkdir -p "$APPDIR/usr/share/icons"
+cp -r lui/branding/hicolor "$APPDIR/usr/share/icons/"
+cp lui/branding/hicolor/256x256/apps/$ID.png "$APPDIR/$ID.png"
+cp lui/branding/hicolor/256x256/apps/$ID.png "$APPDIR/.DirIcon"
 
 install -Dm644 lui/packaging/$ID.desktop "$APPDIR/$ID.desktop"
 install -Dm644 lui/packaging/$ID.desktop "$APPDIR/usr/share/applications/$ID.desktop"

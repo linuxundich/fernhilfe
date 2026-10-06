@@ -1,8 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
-  <!-- Fernhilfe: Linux und Ich mark (prompt + cursor) with an orange "someone comes to you" badge -->
-  <rect x="6" y="6" width="88" height="88" rx="18" fill="#2b2a2a"/>
-  <path d="M 30,30 L 52,45 L 30,60 L 30,50 L 38,45 L 30,40 Z" fill="#ff6600"/>
-  <rect x="30" y="64" width="22" height="8" fill="#ff6600"/>
-  <circle cx="70" cy="68" r="15" fill="#ff6600"/>
-  <path d="M62 68 h16 M72 62 l6 6 -6 6" stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Fernhilfe: Linux und Ich mark (terminal window with >_) and a foreign orange mouse pointer.
+       128 px grid with a dark base like GNOME app icons. Only straight lines and circular arcs. -->
+  <rect x="10" y="14" width="108" height="104" rx="16" fill="#141414"/>
+  <rect x="10" y="10" width="108" height="104" rx="16" fill="#2b2a2a"/>
+  <path d="M10,36 L118,36 L118,26 A16,16 0 0 0 102,10 L26,10 A16,16 0 0 0 10,26 Z" fill="#1a1a1a"/>
+  <circle cx="28" cy="23" r="5" fill="#ff6600"/>
+  <circle cx="44" cy="23" r="5" fill="#63625f"/>
+  <circle cx="60" cy="23" r="5" fill="#63625f"/>
+  <path d="M24,48 L52,67 L24,86 L24,73 L35,67 L24,61 Z" fill="#ff6600"/>
+  <rect x="24" y="90" width="28" height="10" fill="#ff6600"/>
+  <path d="M66,50 L66,98 L78,87 L86,105 L95,101 L87,84 L103,84 Z" fill="#ff6600" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
 </svg>
