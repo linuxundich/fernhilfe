@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hbb/common.dart';
 
 import 'lui_style.dart';
+import 'lui_update.dart';
 
 /// Width of the main window's content (upstream: 280).
 const double kLuiHomeWidth = 420;
@@ -54,6 +55,7 @@ class LuiHome extends StatelessWidget {
             builder: (context, value, _) => _IdBox(id: value.text),
           ),
           const SizedBox(height: 18),
+          const _UpdateHint(),
           _Step(
               n: 1,
               text: lt(
@@ -140,6 +142,82 @@ class _Step extends StatelessWidget {
           Expanded(child: Text(text, style: LuiText.body(c))),
         ],
       ),
+    );
+  }
+}
+
+class _UpdateHint extends StatefulWidget {
+  const _UpdateHint();
+
+  @override
+  State<_UpdateHint> createState() => _UpdateHintState();
+}
+
+class _UpdateHintState extends State<_UpdateHint> {
+  static Future<LuiUpdate?>? _check;
+  bool _running = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _check ??= luiCheckUpdate();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = LuiColors.of(context);
+    return FutureBuilder<LuiUpdate?>(
+      future: _check,
+      builder: (context, snap) {
+        final u = snap.data;
+        if (u == null) return const SizedBox.shrink();
+        final canUpdate = luiInstalledHome != null;
+        return Container(
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.fromLTRB(12, 10, 10, 10),
+          decoration: BoxDecoration(
+            color: c.surface2,
+            borderRadius: BorderRadius.circular(6),
+            border: Border(left: BorderSide(color: kLuiOrange, width: 3)),
+          ),
+          child: Row(children: [
+            Expanded(
+              child: Text(
+                canUpdate
+                    ? lt('Neue Version ${u.latest} verfügbar.',
+                        'New version ${u.latest} available.')
+                    : lt('Neue Version ${u.latest} auf support.linuxandi.net.',
+                        'New version ${u.latest} on support.linuxandi.net.'),
+                style: LuiText.body(c).copyWith(fontSize: 13),
+              ),
+            ),
+            if (canUpdate)
+              TextButton(
+                onPressed: _running
+                    ? null
+                    : () async {
+                        setState(() => _running = true);
+                        if (!await luiRunUpdate() && mounted) {
+                          setState(() => _running = false);
+                        }
+                      },
+                style: TextButton.styleFrom(
+                    backgroundColor: kLuiOrange,
+                    foregroundColor: kLuiInk,
+                    padding: const EdgeInsets.symmetric(horizontal: 12)),
+                child: Text(
+                    _running
+                        ? lt('Wird geladen …', 'Updating …')
+                        : lt('Jetzt aktualisieren', 'Update now'),
+                    style: const TextStyle(
+                        fontFamily: kLuiFontBody,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                        color: kLuiInk)),
+              ),
+          ]),
+        );
+      },
     );
   }
 }
