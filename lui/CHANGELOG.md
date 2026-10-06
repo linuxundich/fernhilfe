@@ -5,6 +5,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.5.0-lui.3]
+
+### Fixed
+- Fernhilfe texts pick their language like RustDesk does (LC_ALL, LC_CTYPE, LANG). Before, English
+  systems with German formats showed English Fernhilfe texts next to German RustDesk texts.
+
+### Changed
+- GitHub page screenshots from a real Ubuntu 26.04 installation.
+
 ## [1.5.0-lui.2]
 
 ### Added
