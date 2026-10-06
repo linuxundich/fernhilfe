@@ -13,9 +13,12 @@ const kLuiFontHeading = 'SpaceGrotesk';
 const kLuiFontMono = 'JetBrainsMono';
 
 /// German if the system language is German, otherwise English.
+/// Same lookup order as RustDesk (sys-locale: LC_ALL, LC_CTYPE, LANG), so the Fernhilfe texts
+/// and RustDesk's own texts never end up in different languages.
 bool get luiIsGerman {
   final env = Platform.environment;
-  final lang = env['LC_ALL'] ?? env['LC_MESSAGES'] ?? env['LANG'] ?? '';
+  String? pick(String k) => (env[k] ?? '').isEmpty ? null : env[k];
+  final lang = pick('LC_ALL') ?? pick('LC_CTYPE') ?? pick('LANG') ?? '';
   final l = lang.isNotEmpty ? lang : Platform.localeName;
   return l.toLowerCase().startsWith('de');
 }
