@@ -11,7 +11,7 @@
 <p align="center">
   <img src="/lui/screenshots/start-en.webp" width="320" alt="Remote Help window with the help number and the status Ready">
   &nbsp;
-  <img src="/lui/screenshots/request-de.webp" width="196" alt="Connection request with Accept and Cancel (German interface)">
+  <img src="/lui/screenshots/request-en.webp" width="196" alt="Connection request: Toff wants to help, with Decline and Accept">
 </p>
 
 ## What it does
