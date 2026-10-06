@@ -1,0 +1,8 @@
+#!/bin/sh
+# Fernhilfe AppImage entry point
+HERE=$(dirname "$(readlink -f "$0")")
+# own icons and .desktop first, so the window shows the Fernhilfe icon
+export XDG_DATA_DIRS="$HERE/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# only libraries the system may lack (see lui/build/appimage.sh); system versions win otherwise
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$HERE/usr/lib"
+exec "$HERE/usr/share/fernhilfe/rustdesk" "$@"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>de.linuxundich.Fernhilfe</id>
+  <name>Remote Help</name>
+  <name xml:lang="de">Fernhilfe</name>
+  <summary>Get remote support from Linux und Ich</summary>
+  <summary xml:lang="de">Hilfe per Fernzugriff von Linux und Ich</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>AGPL-3.0-only</project_license>
+  <developer id="de.linuxundich"><name>Christoph Langner</name></developer>
+  <url type="homepage">https://support.linuxandi.net/</url>
+  <url type="vcs-browser">https://github.com/linuxundich/fernhilfe</url>
+  <description>
+    <p>An incoming-only build of RustDesk that connects to the Linux und Ich support server and nothing else. Start it, tell your helper the number and allow the request.</p>
+  </description>
+  <launchable type="desktop-id">de.linuxundich.Fernhilfe.desktop</launchable>
+</component>

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Remote Help
+Name[de]=Fernhilfe
+GenericName=Remote support
+GenericName[de]=Fernwartung
+Comment=Get help from Linux und Ich
+Comment[de]=Hilfe von Linux und Ich bekommen
+Exec=fernhilfe %u
+Icon=de.linuxundich.Fernhilfe
+Terminal=false
+Categories=Network;RemoteAccess;
+Keywords=rustdesk;remote;support;help;
+Keywords[de]=rustdesk;fernwartung;fernhilfe;hilfe;support;
+StartupWMClass=de.linuxundich.Fernhilfe
