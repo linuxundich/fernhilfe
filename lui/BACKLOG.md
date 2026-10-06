@@ -8,4 +8,4 @@
 - [ ] aarch64 build
 - [ ] Windows build from the same branch
 - [x] New request-window screenshots (DE + EN) for the support page (lui.2 design)
-- [ ] Screenshots from the Ubuntu VM instead of the Arch desktop
+- [x] Screenshots from the Ubuntu VM instead of the Arch desktop (2026-10-06; update lui.2 → lui.3 via "Update now" tested there)
