@@ -177,6 +177,26 @@ flutter:
     - family: More
       fonts:
         - asset: assets/more.ttf
+    # LUI: Linux und Ich CI fonts (OFL, see assets/lui-fonts/OFL-*.txt)
+    - family: Inter
+      fonts:
+        - asset: assets/lui-fonts/Inter-Regular.ttf
+        - asset: assets/lui-fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/lui-fonts/Inter-Bold.ttf
+          weight: 700
+    - family: SpaceGrotesk
+      fonts:
+        - asset: assets/lui-fonts/SpaceGrotesk-Medium.ttf
+          weight: 500
+        - asset: assets/lui-fonts/SpaceGrotesk-Bold.ttf
+          weight: 700
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/lui-fonts/JetBrainsMono-SemiBold.ttf
+          weight: 600
+        - asset: assets/lui-fonts/JetBrainsMono-Bold.ttf
+          weight: 700
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

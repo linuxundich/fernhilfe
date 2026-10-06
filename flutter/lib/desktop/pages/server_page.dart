@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hbb/lui/lui_style.dart'; // LUI
 import 'package:flutter_hbb/common/widgets/audio_input.dart';
 import 'package:flutter_hbb/consts.dart';
 import 'package:flutter_hbb/desktop/widgets/tabbar_widget.dart';
@@ -461,10 +462,7 @@ class _CmHeaderState extends State<_CmHeader>
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            Color(0xff00bfe1),
-            Color(0xff0071ff),
-          ],
+          colors: kLuiCmHeaderGradient, // LUI: was 0xff00bfe1 -> 0xff0071ff
         ),
       ),
       margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
@@ -1143,6 +1141,7 @@ class _CmControlPanel extends StatelessWidget {
       String? tooltip,
       GestureTapDownCallback? onTapDown}) {
     assert(!(onClick == null && onTapDown == null));
+    textColor = luiButtonTextColor(color, textColor); // LUI: dark text on orange
     Widget textWidget;
     if (icon != null) {
       textWidget = Text(
