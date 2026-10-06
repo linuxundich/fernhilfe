@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hbb/lui/lui_cm.dart'; // LUI
 import 'package:flutter_hbb/lui/lui_style.dart'; // LUI
 import 'package:flutter_hbb/common/widgets/audio_input.dart';
 import 'package:flutter_hbb/consts.dart';
@@ -362,6 +363,7 @@ class ConnectionManagerState extends State<ConnectionManager>
 }
 
 Widget buildConnectionCard(Client client) {
+  if (luiHandlesClient(client)) return buildLuiConnectionCard(client); // LUI
   return Consumer<ServerModel>(
     builder: (context, value, child) => Column(
       mainAxisAlignment: MainAxisAlignment.start,
