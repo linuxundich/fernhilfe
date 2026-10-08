@@ -10,7 +10,7 @@ import 'lui_style.dart';
 import 'lui_update.dart';
 
 /// Width of the main window's content (upstream: 280).
-const double kLuiHomeWidth = 560;
+const double kLuiHomeWidth = 480;
 
 /// Name shown in the instructions: the person who helps.
 const String kLuiHelperName = 'Christoph';
@@ -37,24 +37,24 @@ class LuiHome extends StatelessWidget {
     final c = LuiColors.of(context);
     final model = gFFI.serverModel;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(32, 26, 32, 20),
+      padding: const EdgeInsets.fromLTRB(26, 22, 26, 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(lt('Hallo! Gleich kann dir jemand helfen.',
                   'Hi! Someone can help you in a moment.'),
               style: LuiText.heading(c)),
-          const SizedBox(height: 6),
+          const SizedBox(height: 4),
           Text(
               lt('Lass dieses Fenster offen, solange die Hilfe läuft.',
                   'Keep this window open while you get help.'),
               style: LuiText.body(c, muted: true)),
-          const SizedBox(height: 22),
+          const SizedBox(height: 18),
           ValueListenableBuilder<TextEditingValue>(
             valueListenable: model.serverId,
             builder: (context, value, _) => _IdBox(id: value.text),
           ),
-          const SizedBox(height: 22),
+          const SizedBox(height: 18),
           const _UpdateHint(),
           _Step(
               n: 1,
@@ -91,7 +91,7 @@ class _IdBox extends StatelessWidget {
     final c = LuiColors.of(context);
     final ready = id.trim().isNotEmpty;
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
       decoration: BoxDecoration(
         color: c.surface2,
         border: Border.all(color: c.line),
@@ -137,19 +137,19 @@ class _Step extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = LuiColors.of(context);
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 28,
-            height: 28,
+            width: 22,
+            height: 22,
             alignment: Alignment.center,
             decoration:
                 const BoxDecoration(color: kLuiOrange, shape: BoxShape.circle),
             child: Text('$n', style: LuiText.badge()),
           ),
-          const SizedBox(width: 14),
+          const SizedBox(width: 10),
           Expanded(child: Text(text, style: LuiText.body(c))),
         ],
       ),
@@ -199,7 +199,7 @@ class _UpdateHintState extends State<_UpdateHint> {
                         'New version ${u.latest} available.')
                     : lt('Neue Version ${u.latest} auf hilfe.linuxandi.net.',
                         'New version ${u.latest} on hilfe.linuxandi.net.'),
-                style: LuiText.body(c).copyWith(fontSize: 16),
+                style: LuiText.body(c).copyWith(fontSize: 13),
               ),
             ),
             if (canUpdate)
@@ -223,7 +223,7 @@ class _UpdateHintState extends State<_UpdateHint> {
                     style: const TextStyle(
                         fontFamily: kLuiFontBody,
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
+                        fontSize: 13,
                         color: kLuiInk)),
               ),
           ]),

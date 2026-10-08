@@ -61,30 +61,30 @@ class LuiColors {
 class LuiText {
   static TextStyle heading(LuiColors c) => TextStyle(
       fontFamily: kLuiFontHeading,
-      fontSize: 26,
+      fontSize: 21,
       fontWeight: FontWeight.w600,
       height: 1.25,
       color: c.text);
   static TextStyle body(LuiColors c, {bool muted = false}) => TextStyle(
       fontFamily: kLuiFontBody,
-      fontSize: 17,
-      height: 1.45,
+      fontSize: 14,
+      height: 1.4,
       color: muted ? c.muted : c.text);
   static TextStyle label(LuiColors c) => TextStyle(
       fontFamily: kLuiFontMono,
-      fontSize: 13,
+      fontSize: 11,
       fontWeight: FontWeight.w600,
       letterSpacing: 0.9,
       color: c.muted);
   static TextStyle number(LuiColors c) => TextStyle(
       fontFamily: kLuiFontMono,
-      fontSize: 56,
+      fontSize: 48,
       fontWeight: FontWeight.w700,
       letterSpacing: 1,
       color: c.text);
   static TextStyle badge() => const TextStyle(
       fontFamily: kLuiFontHeading,
-      fontSize: 15,
+      fontSize: 12,
       fontWeight: FontWeight.w700,
       color: kLuiInk);
 }

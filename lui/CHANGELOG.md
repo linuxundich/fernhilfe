@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.5.0-lui.6]
+
+### Changed
+- Back to the normal type size of lui.4 (start screen 480 px wide, text 14 px, help number 48 px; request
+  window at upstream's 300 x 490 px, smaller session bar). The larger type of lui.5 is reverted, so the
+  hooks in `consts.dart` and `connection_page.dart` are gone again.
+
+### Kept
+- The plain-words hint on Wayland sessions that the computer asks once more for screen sharing.
+
 ## [1.5.0-lui.5]
 
 ### Changed
