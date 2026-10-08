@@ -25,6 +25,13 @@ bool get luiIsGerman {
 
 String lt(String de, String en) => luiIsGerman ? de : en;
 
+/// Wayland session: after "Accept" the desktop asks once more (screen sharing portal).
+bool get luiIsWayland {
+  final env = Platform.environment;
+  return (env['XDG_SESSION_TYPE'] ?? '').toLowerCase() == 'wayland' ||
+      (env['WAYLAND_DISPLAY'] ?? '').isNotEmpty;
+}
+
 class LuiColors {
   final Color surface, surface2, text, muted, line, accentText, ok;
   const LuiColors._(this.surface, this.surface2, this.text, this.muted,
@@ -54,30 +61,30 @@ class LuiColors {
 class LuiText {
   static TextStyle heading(LuiColors c) => TextStyle(
       fontFamily: kLuiFontHeading,
-      fontSize: 21,
+      fontSize: 26,
       fontWeight: FontWeight.w600,
       height: 1.25,
       color: c.text);
   static TextStyle body(LuiColors c, {bool muted = false}) => TextStyle(
       fontFamily: kLuiFontBody,
-      fontSize: 14,
-      height: 1.4,
+      fontSize: 17,
+      height: 1.45,
       color: muted ? c.muted : c.text);
   static TextStyle label(LuiColors c) => TextStyle(
       fontFamily: kLuiFontMono,
-      fontSize: 11,
+      fontSize: 13,
       fontWeight: FontWeight.w600,
       letterSpacing: 0.9,
       color: c.muted);
   static TextStyle number(LuiColors c) => TextStyle(
       fontFamily: kLuiFontMono,
-      fontSize: 48,
+      fontSize: 56,
       fontWeight: FontWeight.w700,
       letterSpacing: 1,
       color: c.text);
   static TextStyle badge() => const TextStyle(
       fontFamily: kLuiFontHeading,
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: FontWeight.w700,
       color: kLuiInk);
 }

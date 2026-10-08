@@ -37,7 +37,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
   final _svcIsUsingPublicServer = true.obs;
   Timer? _updateTimer;
 
-  double get em => 14.0;
+  double get em => bind.isIncomingOnly() ? 17.0 : 14.0; // LUI: was 14.0, larger in Fernhilfe
   double? get height => bind.isIncomingOnly() ? null : em * 3;
 
   void onUsePublicServerGuide() {

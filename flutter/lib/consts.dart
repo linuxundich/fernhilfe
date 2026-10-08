@@ -349,8 +349,8 @@ extension StringExtension on String {
   String get nonBreaking => replaceAll(' ', String.fromCharCode($nbsp));
 }
 
-const Size kConnectionManagerWindowSizeClosedChat = Size(300, 490);
-const Size kConnectionManagerWindowSizeOpenChat = Size(700, 490);
+const Size kConnectionManagerWindowSizeClosedChat = Size(420, 490); // LUI: was 300, wider card (lui/lui_cm.dart)
+const Size kConnectionManagerWindowSizeOpenChat = Size(820, 490); // LUI: was 700
 // Tabbar transition duration, now we remove the duration
 const Duration kTabTransitionDuration = Duration.zero;
 const double kEmptyMarginTop = 50;

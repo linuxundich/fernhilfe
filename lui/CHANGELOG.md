@@ -5,6 +5,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.5.0-lui.5]
+
+### Changed
+- Larger type throughout for people with weaker eyes: start screen 560 px wide, headings 26 px,
+  text 17 px, help number 56 px, status line 17 px; request window opens at 420 x 700 px with bigger
+  buttons, icons and text; the session bar grows accordingly. The card width (closed chat) is now
+  420 px, so the wider window no longer shows the empty chat panel next to the card.
+
+### Added
+- On Wayland sessions the start screen and the request window say in plain words that the computer
+  asks once more for screen sharing, and what to click there.
+
 ## [1.5.0-lui.4]
 
 ### Changed

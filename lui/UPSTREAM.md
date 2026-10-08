@@ -10,6 +10,8 @@ Every change to an upstream file. Search for `LUI:` to find them. Keep this list
 | `src/common.rs` `read_custom_client_advanced_settings` | `pub(crate)` | reused by `lui.rs` |
 | `flutter/lib/desktop/pages/desktop_home_page.dart` | import, `buildLuiHome()` in `buildLeftPane`, width `kLuiHomeWidth` | Fernhilfe start screen |
 | `flutter/lib/desktop/pages/server_page.dart` | imports, `buildLuiConnectionCard()` at the top of `buildConnectionCard` (remote sessions), header gradient `kLuiCmHeaderGradient`, `luiButtonTextColor()` in `buildButton` | Fernhilfe request window and session bar; CI colours for the remaining upstream cards |
+| `flutter/lib/consts.dart` `kConnectionManagerWindowSize*` | 420/820 px wide instead of 300/700 | wider request card; upstream shows the chat panel as soon as the window is wider than the closed-chat width |
+| `flutter/lib/desktop/pages/connection_page.dart` `_OnlineStatusWidgetState.em` | 17 px instead of 14 px when incoming only | larger status line ("Ready") |
 | `flutter/lib/common.dart` `MyTheme` | `accent*`, `button` colours | CI orange |
 | `flutter/pubspec.yaml` | font families Inter, SpaceGrotesk, JetBrainsMono | CI fonts |
 | `flutter/linux/my_application.cc` | `g_set_prgname`, icon name | own WM_CLASS and window icon |

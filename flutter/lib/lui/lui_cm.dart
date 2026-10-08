@@ -16,8 +16,12 @@ import '../models/server_model.dart';
 import 'lui_home.dart' show luiFormatId;
 import 'lui_style.dart';
 
-/// Window size of the session bar (tab bar + one row).
-const Size kLuiCmBarSize = Size(300, kDesktopRemoteTabBarHeight + 76);
+/// Window size of the session bar (tab bar + one row). 420 = kConnectionManagerWindowSizeClosedChat.
+const Size kLuiCmBarSize = Size(420, kDesktopRemoteTabBarHeight + 100);
+
+/// Window size while asking (upstream: 300 x 490). Larger type for people with weaker eyes.
+const Size kLuiCmRequestSize =
+    Size(420, 700);
 
 /// Only plain remote-control sessions get the Fernhilfe card; file transfer, terminal and
 /// the like keep upstream's card.
@@ -48,6 +52,14 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
         setState(() => _seconds++);
       }
     });
+    // main.dart sizes the window right after showing it; enlarge it a moment later
+    if (!client.authorized) {
+      Future.delayed(const Duration(milliseconds: 400), () {
+        if (mounted && !_isBar) {
+          windowManager.setSizeAlignment(kLuiCmRequestSize, Alignment.topRight);
+        }
+      });
+    }
   }
 
   @override
@@ -96,7 +108,7 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
     });
   }
 
-  Widget _avatar({double size = 48, bool grey = false}) => Container(
+  Widget _avatar({double size = 60, bool grey = false}) => Container(
         width: size,
         height: size,
         alignment: Alignment.center,
@@ -122,13 +134,13 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
             ? const Color(0xFFDC2626)
             : c.text;
     return SizedBox(
-      height: 36,
+      height: 50,
       child: TextButton(
         onPressed: onTap,
         style: TextButton.styleFrom(
           backgroundColor: primary ? kLuiOrange : Colors.transparent,
           foregroundColor: fg,
-          padding: const EdgeInsets.symmetric(horizontal: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 18),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
             side: primary ? BorderSide.none : BorderSide(color: c.line),
@@ -138,17 +150,17 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
             style: TextStyle(
                 fontFamily: kLuiFontBody,
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: 17,
                 color: fg)),
       ),
     );
   }
 
   Widget _perm(IconData icon, String text, LuiColors c) => Padding(
-        padding: const EdgeInsets.only(bottom: 6),
+        padding: const EdgeInsets.only(bottom: 8),
         child: Row(children: [
-          Icon(icon, size: 16, color: c.accentText),
-          const SizedBox(width: 8),
+          Icon(icon, size: 22, color: c.accentText),
+          const SizedBox(width: 10),
           Expanded(child: Text(text, style: LuiText.body(c))),
         ]),
       );
@@ -167,11 +179,11 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(lt('$_name möchte helfen', '$_name wants to help'),
-                      style: LuiText.heading(c).copyWith(fontSize: 17)),
+                      style: LuiText.heading(c).copyWith(fontSize: 22)),
                   const SizedBox(height: 2),
                   Text(lt('von Gerät ', 'from device ') + luiFormatId(client.peerId),
                       style: LuiText.body(c, muted: true)
-                          .copyWith(fontSize: 12.5)),
+                          .copyWith(fontSize: 15)),
                 ],
               ),
             ),
@@ -198,8 +210,13 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
                 color: c.surface2, borderRadius: BorderRadius.circular(6)),
             child: Text(
                 lt('Akzeptiere nur, wenn du gerade mit $_name sprichst.',
-                    'Only accept if you’re talking to $_name right now.'),
-                style: LuiText.body(c, muted: true).copyWith(fontSize: 12.5)),
+                        'Only accept if you’re talking to $_name right now.') +
+                    (luiIsWayland
+                        ? lt(
+                            '\n\nDanach fragt dein Rechner noch einmal, ob er den Bildschirm teilen darf. Erlaube das auch dort.',
+                            '\n\nYour computer then asks once more whether it may share the screen. Allow that too.')
+                        : ''),
+                style: LuiText.body(c, muted: true).copyWith(fontSize: 15)),
           ),
           const Spacer(),
           Row(children: [
@@ -229,7 +246,7 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Row(children: [
-        _avatar(size: 34),
+        _avatar(size: 44),
         const SizedBox(width: 10),
         Expanded(
           child: Column(
@@ -239,7 +256,7 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
               Text(lt('$_name ist verbunden', '$_name is connected'),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: LuiText.heading(c).copyWith(fontSize: 14)),
+                  style: LuiText.heading(c).copyWith(fontSize: 18)),
               const SizedBox(height: 2),
               Row(children: [
                 Container(
@@ -253,7 +270,7 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: LuiText.body(c, muted: true).copyWith(
-                          fontSize: 12.5,
+                          fontSize: 15,
                           fontFeatures: const [FontFeature.tabularFigures()])),
                 ),
               ]),
@@ -270,11 +287,11 @@ class _LuiConnectionCardState extends State<LuiConnectionCard> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Row(children: [
-        _avatar(size: 34, grey: true),
+        _avatar(size: 44, grey: true),
         const SizedBox(width: 10),
         Expanded(
           child: Text(lt('Verbindung beendet', 'Connection ended'),
-              style: LuiText.heading(c).copyWith(fontSize: 14)),
+              style: LuiText.heading(c).copyWith(fontSize: 18)),
         ),
         _button(lt('Schließen', 'Close'), onTap: _close, c: c),
       ]),
