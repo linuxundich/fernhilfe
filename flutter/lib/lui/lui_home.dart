@@ -10,7 +10,7 @@ import 'lui_style.dart';
 import 'lui_update.dart';
 
 /// Width of the main window's content (upstream: 280).
-const double kLuiHomeWidth = 420;
+const double kLuiHomeWidth = 480;
 
 /// Name shown in the instructions: the person who helps.
 const String kLuiHelperName = 'Christoph';
@@ -95,8 +95,12 @@ class _IdBox extends StatelessWidget {
           Text(lt('DEINE HILFE-NUMMER', 'YOUR HELP NUMBER'),
               style: LuiText.label(c)),
           const SizedBox(height: 4),
-          SelectableText(ready ? luiFormatId(id) : '…',
-              style: LuiText.number(c), textAlign: TextAlign.center),
+          // scaleDown: ten-digit numbers must never be cut off
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(ready ? luiFormatId(id) : '…',
+                style: LuiText.number(c), textAlign: TextAlign.center),
+          ),
           const SizedBox(height: 2),
           TextButton(
             onPressed: ready
@@ -186,8 +190,8 @@ class _UpdateHintState extends State<_UpdateHint> {
                 canUpdate
                     ? lt('Neue Version ${u.latest} verfügbar.',
                         'New version ${u.latest} available.')
-                    : lt('Neue Version ${u.latest} auf support.linuxandi.net.',
-                        'New version ${u.latest} on support.linuxandi.net.'),
+                    : lt('Neue Version ${u.latest} auf hilfe.linuxandi.net.',
+                        'New version ${u.latest} on hilfe.linuxandi.net.'),
                 style: LuiText.body(c).copyWith(fontSize: 13),
               ),
             ),

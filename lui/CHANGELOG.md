@@ -5,6 +5,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.5.0-lui.4]
+
+### Changed
+- The support site moved to hilfe.linuxandi.net; update check and "Update now" use the new address.
+  The old address keeps serving downloads, so earlier versions still find updates.
+- Bigger help number on the start screen (48 px instead of 34 px, window 480 px wide); it scales down
+  instead of being cut off.
+
 ## [1.5.0-lui.3]
 
 ### Fixed

@@ -71,9 +71,9 @@ class LuiText {
       color: c.muted);
   static TextStyle number(LuiColors c) => TextStyle(
       fontFamily: kLuiFontMono,
-      fontSize: 34,
+      fontSize: 48,
       fontWeight: FontWeight.w700,
-      letterSpacing: 2,
+      letterSpacing: 1,
       color: c.text);
   static TextStyle badge() => const TextStyle(
       fontFamily: kLuiFontHeading,

@@ -1,6 +1,6 @@
 // Fernhilfe (Linux und Ich): update hint.
 //
-// Compares the bundled VERSION file with https://support.linuxandi.net/download/fernhilfe-version.txt.
+// Compares the bundled VERSION file with https://hilfe.linuxandi.net/download/fernhilfe-version.txt.
 // If Fernhilfe was set up by the one-liner (~/.local/share/fernhilfe/app), "Update now" runs the
 // one-liner again in the background: it waits until this process has exited, installs the new
 // version and starts it. A directly started AppImage only gets the hint.
@@ -8,7 +8,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-const String kLuiDownloadBase = 'https://support.linuxandi.net';
+const String kLuiDownloadBase = 'https://hilfe.linuxandi.net';
 const String _kInstallDir = '/.local/share/fernhilfe/app/';
 
 class LuiUpdate {

@@ -15,7 +15,7 @@ The rest of this repository is upstream RustDesk, unchanged.
 
 ## Download
 
-Get it from <https://support.linuxandi.net/>. The one-liner there downloads the AppImage
+Get it from <https://hilfe.linuxandi.net/>. The one-liner there downloads the AppImage
 to `~/.local/share/fernhilfe/` and adds a menu entry; you can also run the AppImage directly.
 
 ## Repository layout

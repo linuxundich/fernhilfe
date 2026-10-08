@@ -28,10 +28,10 @@ Linux x86_64 with glibc 2.39 or newer: Ubuntu 24.04+, Linux Mint 22, Debian 13, 
 ## Get it
 
 Remote Help is meant for people I help personally. The one-liner and instructions (German and English) are at
-**[support.linuxandi.net](https://support.linuxandi.net/)**:
+**[hilfe.linuxandi.net](https://hilfe.linuxandi.net/)**:
 
 ```sh
-wget -qO- https://support.linuxandi.net/fernhilfe.sh | sh
+wget -qO- https://hilfe.linuxandi.net/fernhilfe.sh | sh
 ```
 
 It downloads the AppImage to `~/.local/share/fernhilfe/`, adds a menu entry with a *Remove* action and starts it.
